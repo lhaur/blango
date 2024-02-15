@@ -21,7 +21,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='comment',
             name='content_type',
-            field=models.ForeignKey(default='lol', on_delete=django.db.models.deletion.CASCADE, to='contenttypes.contenttype'),
+            field=models.ForeignKey(default='', on_delete=django.db.models.deletion.CASCADE, to='contenttypes.contenttype'),
             preserve_default=False,
         ),
         migrations.AddField(
