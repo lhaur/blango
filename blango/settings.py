@@ -48,6 +48,7 @@ class Dev(Configuration):
     # SECURITY WARNING: don't run with debug turned on in production!
     DEBUG = values.BooleanValue(True)
 
+    INTERNAL_IPS = ["192.168.10.156"]
     ALLOWED_HOSTS = ['*']
     X_FRAME_OPTIONS = 'ALLOW-FROM ' + os.environ.get('CODIO_HOSTNAME') + '-8000.codio.io'
     CSRF_COOKIE_SAMESITE = None
@@ -60,6 +61,7 @@ class Dev(Configuration):
     # Application definition
 
     INSTALLED_APPS = [
+        'debug_toolbar',
         'django.contrib.admin',
         'django.contrib.auth',
         'django.contrib.contenttypes',
@@ -72,6 +74,7 @@ class Dev(Configuration):
     ]
 
     MIDDLEWARE = [
+        "debug_toolbar.middleware.DebugToolbarMiddleware",
         'django.middleware.security.SecurityMiddleware',
         'django.contrib.sessions.middleware.SessionMiddleware',
         'django.middleware.common.CommonMiddleware',
