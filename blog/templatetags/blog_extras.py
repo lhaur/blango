@@ -15,7 +15,7 @@ def recent_posts(post):
 
 @register.simple_tag
 def row(extra_classes=""):
-    return format_html('<div class="row{}">', extra_classes)
+    return format_html('<div class="row {}">', extra_classes)
 
 
 @register.simple_tag
@@ -23,8 +23,11 @@ def endrow():
     return format_html("</div>")
 
 @register.simple_tag
-def col():
-  return format_html('<div class="col">')
+def col(cols="col"):
+    if(cols):
+        return format_html(f'<div class="{cols}"')
+    else:
+        return format_html('<div class="col">')
 
 @register.simple_tag
 def endcol():
