@@ -78,7 +78,8 @@ class Dev(Configuration):
         "allauth.account",
         "allauth.socialaccount",
         "allauth.socialaccount.providers.google",
-        'rest_framework'
+        'rest_framework',
+        'rest_framework.authtoken'
     ]
     AUTH_USER_MODEL = "blango_auth.User"
     SITE_ID = 1
@@ -150,6 +151,14 @@ class Dev(Configuration):
     ]
 
 
+    # REST rest_framework
+    REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.BasicAuthentication",
+        "rest_framework.authentication.SessionAuthentication",
+        "rest_framework.authentication.TokenAuthentication",
+    ]
+}
     # Internationalization
     # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
