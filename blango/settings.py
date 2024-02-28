@@ -79,7 +79,8 @@ class Dev(Configuration):
         "allauth.socialaccount",
         "allauth.socialaccount.providers.google",
         'rest_framework',
-        'rest_framework.authtoken'
+        'rest_framework.authtoken',
+        'drf_yasg'
     ]
     AUTH_USER_MODEL = "blango_auth.User"
     SITE_ID = 1
@@ -187,6 +188,12 @@ class Dev(Configuration):
     DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
     CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
     CRISPY_TEMPLATE_PACK = "bootstrap5"
+    SWAGGER_SETTINGS = {
+        "SECURITY_DEFINITIONS": {
+            "Token": {"type": "apiKey", "name": "Authorization", "in": "header"},
+            "Basic": {"type": "basic"},
+        }
+    }
 
 class Prod(Dev):
   DEBUG = False
